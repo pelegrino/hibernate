@@ -1,9 +1,12 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
@@ -26,7 +29,8 @@ public class UsuarioPessoa {
 	private String senha;
 	private int idade;
 	
-	
+	@OneToMany(mappedBy = "usuarioPessoa")
+	private List<TelefoneUser> telefoneUsers;
 
 	public int getIdade() {
 		return idade;
