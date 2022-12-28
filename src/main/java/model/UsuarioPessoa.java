@@ -31,6 +31,14 @@ public class UsuarioPessoa {
 	
 	@OneToMany(mappedBy = "usuarioPessoa")
 	private List<TelefoneUser> telefoneUsers;
+	
+	public void setTelefoneUsers(List<TelefoneUser> telefoneUsers) {
+		this.telefoneUsers = telefoneUsers;
+	}
+	
+	public List<TelefoneUser> getTelefoneUsers() {
+		return telefoneUsers;
+	}
 
 	public int getIdade() {
 		return idade;

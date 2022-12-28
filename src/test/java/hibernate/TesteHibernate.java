@@ -2,9 +2,12 @@ package hibernate;
 
 import java.util.List;
 
+import javax.xml.xpath.XPathFunctionException;
+
 import org.junit.Test;
 
 import dao.DaoGeneric;
+import model.TelefoneUser;
 import model.UsuarioPessoa;
 
 public class TesteHibernate {
@@ -146,6 +149,36 @@ public class TesteHibernate {
 			System.out.println(usuarioPessoa);
 		}
 		
+	}
+	
+	@Test
+	public void testeGravaTelefone() {
+		DaoGeneric daoGeneric = new DaoGeneric();
+
+		UsuarioPessoa pessoa = (UsuarioPessoa) daoGeneric.pesquisar(6L, UsuarioPessoa.class);
+		
+		TelefoneUser telefoneUser = new TelefoneUser();
+		telefoneUser.setTipo("celular");
+		telefoneUser.setNumero("997167515");
+		telefoneUser.setUsuarioPessoa(pessoa);
+		
+		daoGeneric.salvar(telefoneUser);
+		
+	}
+	
+	@Test
+	public void testeConsultaTelefones() {
+		DaoGeneric daoGeneric = new DaoGeneric();
+
+		UsuarioPessoa pessoa = (UsuarioPessoa) daoGeneric.pesquisar(6L, UsuarioPessoa.class);
+		
+		for (TelefoneUser fone : pessoa.getTelefoneUsers()) {
+			System.out.println(fone.getNumero());
+			System.out.println(fone.getTipo());
+			System.out.println(fone.getUsuarioPessoa().getNome());
+			System.out.println("---------------------");
+		}
+	
 	}
 	
 }
