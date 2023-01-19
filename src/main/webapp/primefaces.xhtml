@@ -41,6 +41,12 @@
 			<h:outputLabel>Idade: </h:outputLabel>
 			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}" required="true" requiredMessage="Informe a idade."/>
 			
+			<h:outputLabel>Sexo: </h:outputLabel>
+			<p:menuButton value="Opção" action="#{usuarioPessoaManagedBean.usuarioPessoa.sexo}" required="true" requiredMessage="Informe o sexo.">
+				<p:menuitem value="Masculino"/>
+				<p:menuitem value="Feminino"/>
+			</p:menuButton>
+			
 			<h:outputLabel>Login: </h:outputLabel>
 			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}" required="true" requiredMessage="Informe o login."/>
 			
