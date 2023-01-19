@@ -10,28 +10,30 @@
 
 	<h:form>
 	
+		<h:messages showDetail="true" showSummary="false"/>
+	
 		<h:panelGrid columns="2">
 	
 			<h:outputLabel>Id: </h:outputLabel>
 			<h:inputText readonly="true" value="#{usuarioPessoaManagedBean.usuarioPessoa.id}"/>
 			
 			<h:outputLabel>Nome: </h:outputLabel>
-			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}"/>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}" required="true" requiredMessage="Informe o nome."/>
 			
 			<h:outputLabel>Sobrenome: </h:outputLabel>
-			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}"/>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome"/>
 			
 			<h:outputLabel>E-mail: </h:outputLabel>
-			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}"/>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}" required="true" requiredMessage="Informe o e-mail."/>
 			
 			<h:outputLabel>Idade: </h:outputLabel>
-			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}"/>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}" required="true" requiredMessage="Informe a idade."/>
 			
 			<h:outputLabel>Login: </h:outputLabel>
-			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}"/>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}" required="true" requiredMessage="Informe o login."/>
 			
 			<h:outputLabel>Senha: </h:outputLabel>
-			<h:inputSecret value="#{usuarioPessoaManagedBean.usuarioPessoa.senha}"/>
+			<h:inputSecret value="#{usuarioPessoaManagedBean.usuarioPessoa.senha}" required="true" requiredMessage="Informe a senha."/>
 			
 		</h:panelGrid>
 		
@@ -75,6 +77,13 @@
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
 				<h:commandLink value="Editar">
+					<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
+				</h:commandLink>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandLink value="Delete" action="#{usuarioPessoaManagedBean.remover}">
 					<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
 				</h:commandLink>
 			</h:column>

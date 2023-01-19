@@ -3,8 +3,10 @@ package managedBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import dao.DaoGeneric;
 import model.UsuarioPessoa;
@@ -41,7 +43,7 @@ public class UsuarioPessoaManagedBean {
 	
 	public String salvar() {
 		daoGeneric.salvar(usuarioPessoa);
-		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação", "Salvo com sucesso"));
 		return "";
 	}
 	
@@ -52,6 +54,7 @@ public class UsuarioPessoaManagedBean {
 	
 	public String remover() {
 		daoGeneric.deletarPorId(usuarioPessoa);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação", "Removido com sucesso"));
 		usuarioPessoa = new UsuarioPessoa();
 		return "";
 	}
