@@ -6,9 +6,64 @@
 <h:head></h:head>
 
 <h:body>
+
 	<h:form>
-		<h:outputLabel>Olá JSF</h:outputLabel>
+	
+		<h:panelGrid columns="2">
+	
+			<h:outputLabel>Id: </h:outputLabel>
+			<h:inputText readonly="true" value="#{usuarioPessoaManagedBean.usuarioPessoa.id}"/>
+			
+			<h:outputLabel>Nome: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}"/>
+			
+			<h:outputLabel>Sobrenome: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}"/>
+			
+			<h:outputLabel>E-mail: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}"/>
+			
+			<h:outputLabel>Idade: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}"/>
+			
+			<h:outputLabel>Login: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}"/>
+			
+			<h:outputLabel>Senha: </h:outputLabel>
+			<h:inputSecret value="#{usuarioPessoaManagedBean.usuarioPessoa.senha}"/>
+			
+		</h:panelGrid>
+		
+		<h:commandButton value="Salvar" action="#{usuarioPessoaManagedBean.salvar}"/>
+		
+		<h:commandButton value="Novo" action="#{usuarioPessoaManagedBean.novo}"/>
+	
+		<h:dataTable value="#{usuarioPessoaManagedBean.list}" var="user">
+			
+			<h:column>
+				<h:outputText value="#{user.id}"/>
+			</h:column>
+			
+			<h:column>
+				<h:outputText value="#{user.nome}"/>
+			</h:column>
+			
+			<h:column>
+				<h:outputText value="#{user.sobrenome}"/>
+			</h:column>
+			
+			<h:column>
+				<h:outputText value="#{user.email}"/>
+			</h:column>
+			
+			<h:column>
+				<h:outputText value="#{user.idade}"/>
+			</h:column>
+		
+		</h:dataTable>
+		
 	</h:form>
+	
 </h:body>
 
 </html>
