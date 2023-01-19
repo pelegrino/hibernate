@@ -71,6 +71,13 @@
 				<f:facet name="header">Idade</f:facet>
 				<h:outputText value="#{user.idade}"/>
 			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink value="Editar">
+					<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
+				</h:commandLink>
+			</h:column>
 		
 		</h:dataTable>
 		
