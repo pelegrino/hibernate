@@ -33,7 +33,17 @@ public class TelefoneManagedBean {
 		telefone.setUsuarioPessoa(user);
 		daoTelefones.salvar(telefone);
 		telefone = new TelefoneUser();
+		user = daoUser.pesquisar(user.getId(), UsuarioPessoa.class);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação", "Salvo com sucesso"));
+		return "";
+	}
+	
+	public String removeTelefone() throws Exception {
+		daoTelefones.deletarPorId(telefone);
+		user = daoUser.pesquisar(user.getId(), UsuarioPessoa.class);
+		telefone = new TelefoneUser();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação", "Telefone removido"));
+		
 		return "";
 	}
 	
