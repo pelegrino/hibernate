@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+<h:body>
+
+	<h:form>
+	
+		<p:breadCrumb>
+			<p:menuitem />
+			<p:menuitem value="JSF" action="index.jsf"/>
+			<p:menuitem value="PrimeFaces" action="primefaces.jsf"/>
+		</p:breadCrumb>
+	
+	</h:form>
+
+
+	<h:form id="formulario">
+	
+		<h:messages showDetail="true" showSummary="false" id="msg"/>
+	
+		<h1>Telefones</h1>
+		<h:outputText value="#{telefoneManagedBean.user.nome}" />
+		
+	</h:form>
+	
+</h:body>
+
+</html>
