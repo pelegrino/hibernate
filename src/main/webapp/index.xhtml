@@ -5,7 +5,9 @@
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<h:head>
+	<title>Hibernate</title>
+</h:head>
 
 <h:body>
 
@@ -46,6 +48,35 @@
 				<f:selectItem itemValue="Masculino"/>
 				<f:selectItem itemValue="Feminino"/>
 			</h:selectOneMenu>
+			
+			<h:outputLabel>CEP: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.cep}" >
+				<f:ajax event="blur" execute="@this" listener="#{usuarioPessoaManagedBean.pesquisaCep}" render="logradouro complemento bairro localidade uf unidade ibge gia"/>
+			</h:inputText>
+			
+			<h:outputLabel>Logradoudo: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.logradouro}" id="logradouro"/>
+			
+			<h:outputLabel>Complemento: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.complemento}" id="complemento" />
+			
+			<h:outputLabel>Bairro: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.bairro}" id="bairro"/>
+			
+			<h:outputLabel>Localidade: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.localidade}" id="localidade"/>
+			
+			<h:outputLabel>UF: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.uf}" id="uf"/>
+			
+			<h:outputLabel>Unidade: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.unidade}" id="unidade"/>
+			
+			<h:outputLabel>IBGE: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.ibge}" id="ibge"/>
+			
+			<h:outputLabel>GIA: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.gia}" id="gia"/>	
 			
 			<h:outputLabel>Login: </h:outputLabel>
 			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}" required="true" requiredMessage="Informe o login."/>
