@@ -38,7 +38,7 @@ public class DaoGeneric<E> {
 		return e;
 	}
 	
-	public void deletarPorId(E entidade) {
+	public void deletarPorId(E entidade) throws Exception {
 		Object id = HibernateUtil.getPrimaryKey(entidade);
 		EntityTransaction transaction = entityManager.getTransaction();	
 		transaction.begin();
@@ -49,13 +49,7 @@ public class DaoGeneric<E> {
 	}
 	
 	public List<E> listar(Class<E> entidade) {
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
-		
 		List<E> lista = entityManager.createQuery("from " + entidade.getName()).getResultList();
-		
-		transaction.commit();
-		
 		return lista;
 	}
 	
