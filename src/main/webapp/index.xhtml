@@ -32,7 +32,7 @@
 			<h:inputText readonly="true" value="#{usuarioPessoaManagedBean.usuarioPessoa.id}"/>
 			
 			<h:outputLabel>Nome: </h:outputLabel>
-			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}" required="true" requiredMessage="Informe o nome."/>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}" required="true" requiredMessage="Informe o nome." />
 			
 			<h:outputLabel>Sobrenome: </h:outputLabel>
 			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome"/>
@@ -129,25 +129,23 @@
 			
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
-				<h:commandLink immediate="true" id="botaoeditar">
+				<h:commandLink>
 					<h:graphicImage url="resources/img/edit.png" width="25" height="25"/>
 					<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
-					<f:ajax execute="botaoeditar" render="@form :formulario:msg" />
 				</h:commandLink>
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">Delete</f:facet>
-				<h:commandLink action="#{usuarioPessoaManagedBean.remover}" id="botaoremover" immediate="true">
+				<h:commandLink action="#{usuarioPessoaManagedBean.remover}" immediate="true">
 					<h:graphicImage url="resources/img/delete.png" width="25" height="25"/>
 					<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
-					<f:ajax execute="botaoremover" render="@form :formulario:msg" />
 				</h:commandLink>
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">Telefones</f:facet>
-				<h:commandLink action="telefone.jsf" id="botaofone" immediate="true">
+				<h:commandLink action="/telefone.jsf" id="botaofone" immediate="true">
 					<h:graphicImage url="resources/img/telefone.png" width="25" height="25"/>
 					<f:param name="codigouser" value="#{user.id}"/>
 				</h:commandLink>
