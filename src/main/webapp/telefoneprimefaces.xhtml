@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+<h:body>
+
+	<h:form>
+	
+		<p:breadCrumb>
+			<p:menuitem />
+			<p:menuitem value="JSF" action="index.jsf"/>
+			<p:menuitem value="PrimeFaces" action="primefaces.jsf"/>
+		</p:breadCrumb>
+	
+	</h:form>
+
+
+	<h:form id="formulario">
+	
+		<p:messages showDetail="true" showSummary="false" id="msg"/>
+			
+			<h:panelGrid columns="2">
+			
+				<p:outputLabel>Usuário: </p:outputLabel>
+				<p:outputLabel value="#{telefoneManagedBean.user.nome}" />
+				
+				<p:outputLabel>Número: </p:outputLabel>
+				<p:inputText value="#{telefoneManagedBean.telefone.numero}" />
+				
+				<p:outputLabel>Tipo: </p:outputLabel>
+				<p:inputText value="#{telefoneManagedBean.telefone.tipo}" />
+				
+			</h:panelGrid>
+			
+			<br/><br/>
+			
+			<p:commandButton value="Salvar" action="#{telefoneManagedBean.salvar}" ajax="true"/>
+			
+	</h:form>
+	
+	<h:form id="formTelefones">
+	
+		<p:dataTable value="#{telefoneManagedBean.user.telefoneUsers}" var="fone" cellpadding="10" border="1">
+		
+			<f:facet name="header">Lista de Telefones</f:facet>
+		
+			<p:column>
+				<f:facet name="header">Id: </f:facet>
+				<p:outputLabel value="#{fone.id}"/>
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">Numero: </f:facet>
+				<p:outputLabel value="#{fone.numero}"/>
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">Tipo: </f:facet>
+				<p:outputLabel value="#{fone.tipo}"/>
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandLink action="#{telefoneManagedBean.removeTelefone}" id="botaoremover" immediate="true">
+					<h:graphicImage url="resources/img/delete.png" width="25" height="25"/>
+					<f:setPropertyActionListener value="#{fone}" target="#{telefoneManagedBean.telefone}"></f:setPropertyActionListener>
+					<f:ajax execute="botaoremover" render="@form :formulario:msg" />
+				</h:commandLink>
+			</p:column>			
+			
+		</p:dataTable>
+	
+	</h:form>
+	
+</h:body>
+
+</html>
