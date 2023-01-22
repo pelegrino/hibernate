@@ -30,22 +30,22 @@
 				<p:outputLabel value="#{telefoneManagedBean.user.nome}" />
 				
 				<p:outputLabel>Número: </p:outputLabel>
-				<p:inputText value="#{telefoneManagedBean.telefone.numero}" />
+				<p:inputText value="#{telefoneManagedBean.telefone.numero}" required="true" requiredMessage="Preencha o número"/>
 				
 				<p:outputLabel>Tipo: </p:outputLabel>
-				<p:inputText value="#{telefoneManagedBean.telefone.tipo}" />
+				<p:inputText value="#{telefoneManagedBean.telefone.tipo}" required="true" requiredMessage="Preencha o tipo"/>
 				
 			</h:panelGrid>
 			
 			<br/><br/>
 			
-			<p:commandButton value="Salvar" action="#{telefoneManagedBean.salvar}" ajax="true"/>
+			<p:commandButton value="Salvar" action="#{telefoneManagedBean.salvar}" ajax="false"/>
 			
 	</h:form>
 	
 	<h:form id="formTelefones">
 	
-		<p:dataTable value="#{telefoneManagedBean.user.telefoneUsers}" var="fone" cellpadding="10" border="1">
+		<p:dataTable value="#{telefoneManagedBean.user.telefoneUsers}" var="fone">
 		
 			<f:facet name="header">Lista de Telefones</f:facet>
 		
