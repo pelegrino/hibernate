@@ -90,7 +90,9 @@
 		
 		<h:commandButton value="Salvar" action="#{usuarioPessoaManagedBean.salvar}"/>
 		
-		<h:commandButton value="Novo" action="#{usuarioPessoaManagedBean.novo}"/>
+		<h:commandButton value="Novo" action="#{usuarioPessoaManagedBean.novo}" immediate="true">
+			<f:ajax execute="@this" render="@form"/>
+		</h:commandButton>
 		
 		<br/><br/><br/>
 		
@@ -129,23 +131,25 @@
 			
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
-				<h:commandLink>
+				<h:commandLink id="botaoeditar" immediate="true">
 					<h:graphicImage url="resources/img/edit.png" width="25" height="25"/>
 					<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
+					<f:ajax execute="botaoeditar" render="formulario"/>
 				</h:commandLink>
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">Delete</f:facet>
-				<h:commandLink action="#{usuarioPessoaManagedBean.remover}" immediate="true">
+				<h:commandLink action="#{usuarioPessoaManagedBean.remover}" immediate="true" id="botaoremover">
 					<h:graphicImage url="resources/img/delete.png" width="25" height="25"/>
 					<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
+					<f:ajax execute="botaoremover" render="@form"/>
 				</h:commandLink>
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">Telefones</f:facet>
-				<h:commandLink action="/telefone.jsf" id="botaofone" immediate="true">
+				<h:commandLink action="telefone.jsf" id="botaofone" immediate="true">
 					<h:graphicImage url="resources/img/telefone.png" width="25" height="25"/>
 					<f:param name="codigouser" value="#{user.id}"/>
 				</h:commandLink>
