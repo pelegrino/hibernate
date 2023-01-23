@@ -37,9 +37,6 @@
 			<h:outputLabel>Sobrenome: </h:outputLabel>
 			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome"/>
 			
-			<h:outputLabel>E-mail: </h:outputLabel>
-			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}"/>
-			
 			<h:outputLabel>Idade: </h:outputLabel>
 			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}"/>
 			
@@ -120,11 +117,6 @@
 			<h:column>
 				<f:facet name="header">Sobrenome</f:facet>
 				<h:outputText value="#{user.sobrenome}"/>
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">E-mail</f:facet>
-				<h:outputText value="#{user.email}"/>
 			</h:column>
 			
 			<h:column>

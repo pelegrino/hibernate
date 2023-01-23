@@ -4,6 +4,7 @@
 	
 	<class>model.UsuarioPessoa</class>
 	<class>model.TelefoneUser</class>
+	<class>model.EmailUser</class>
 	
 		<properties>
 			<!--Dados de Conexão-->
