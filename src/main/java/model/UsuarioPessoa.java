@@ -41,11 +41,21 @@ public class UsuarioPessoa {
 	private String ibge;
 	private String gia;
 	
+	private Double salario;
+	
 	@OneToMany(mappedBy = "usuarioPessoa")
 	private List<TelefoneUser> telefoneUsers;
 	
 	
 	//Getters e Setters
+	
+	public void setSalario(Double salario) {
+		this.salario = salario;
+	}
+	
+	public Double getSalario() {
+		return salario;
+	}
 	
 	public void setSexo(String sexo) {
 		this.sexo = sexo;

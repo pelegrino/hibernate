@@ -38,13 +38,16 @@
 			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome"/>
 			
 			<h:outputLabel>E-mail: </h:outputLabel>
-			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}" required="true" requiredMessage="Informe o e-mail."/>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}"/>
 			
 			<h:outputLabel>Idade: </h:outputLabel>
-			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}" required="true" requiredMessage="Informe a idade."/>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}"/>
+			
+			<h:outputLabel>Salário: </h:outputLabel>
+			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.salario}"/>
 			
 			<h:outputLabel>Sexo: </h:outputLabel>
-			<h:selectOneMenu value="#{usuarioPessoaManagedBean.usuarioPessoa.sexo}" required="true" requiredMessage="Informe o sexo.">
+			<h:selectOneMenu value="#{usuarioPessoaManagedBean.usuarioPessoa.sexo}">
 				<f:selectItem itemValue="Masculino"/>
 				<f:selectItem itemValue="Feminino"/>
 			</h:selectOneMenu>

@@ -38,13 +38,16 @@
 			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome"/>
 			
 			<h:outputLabel>E-mail: </h:outputLabel>
-			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}" required="true" requiredMessage="Informe o e-mail."/>
+			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}"/>
 			
 			<h:outputLabel>Idade: </h:outputLabel>
-			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}" required="true" requiredMessage="Informe a idade."/>
+			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}"/>
+			
+			<h:outputLabel>Salário: </h:outputLabel>
+			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.salario}"/>
 			
 			<h:outputLabel>Sexo: </h:outputLabel>
-			<p:selectOneMenu value="Opção" action="#{usuarioPessoaManagedBean.usuarioPessoa.sexo}" required="true" requiredMessage="Informe o sexo.">
+			<p:selectOneMenu value="Opção" action="#{usuarioPessoaManagedBean.usuarioPessoa.sexo}">
 				<f:selectItem itemValue="Masculino" itemLabel="Masculino" />
 				<f:selectItem itemValue="Feminino" itemLabel="Feminino" />
 			</p:selectOneMenu>
@@ -164,6 +167,8 @@
 		</p:dataTable>
 		
 	</h:form>
+	
+	<p:chart type="bar" model="#{usuarioPessoaManagedBean.barChartModel}"/>
 	
 </h:body>
 
