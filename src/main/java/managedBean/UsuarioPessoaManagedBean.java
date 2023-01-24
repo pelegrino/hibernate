@@ -115,6 +115,7 @@ public class UsuarioPessoaManagedBean {
 	public String salvar() {
 		daoGeneric.salvar(usuarioPessoa);
 		list.add(usuarioPessoa);
+		init();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação", "Salvo com sucesso"));
 		usuarioPessoa = new UsuarioPessoa();
 		return "";
@@ -131,6 +132,7 @@ public class UsuarioPessoaManagedBean {
 			daoGeneric.removerUsuario(usuarioPessoa);
 			list.remove(usuarioPessoa);
 			usuarioPessoa = new UsuarioPessoa();
+			init();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação", "Removido com sucesso"));
 		
 		} catch (Exception e) {
