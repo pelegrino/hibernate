@@ -86,6 +86,12 @@
 			<h:outputLabel>Senha: </h:outputLabel>
 			<p:password value="#{usuarioPessoaManagedBean.usuarioPessoa.senha}" required="true" requiredMessage="Informe a senha."/>
 			
+			<h:outputLabel>Foto:</h:outputLabel>
+			<p:fileUpload mode="advanced" label="Adicionar" auto="true" update="imagem" listener="#{usuarioPessoaManagedBean.upload}"/>
+			
+			<h:outputLabel>Imagem: </h:outputLabel>
+			<h:graphicImage id="imagem" value="#{usuarioPessoaManagedBean.usuarioPessoa.imagem}" width="100" height="100"/>
+			
 		</h:panelGrid>
 		
 		<br/><br/>
