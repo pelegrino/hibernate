@@ -139,6 +139,14 @@
 				<h:outputText value="#{user.nome}" />
 			</p:column>
 			
+			
+			<p:column headerText="Baixar">
+				<h:commandLink immediate="true" actionListener="#{usuarioPessoaManagedBean.download}">
+				<f:param name="fileDownloadId" value="#{user.id}" />	
+				<h:graphicImage url="resources/img/downloads.png" width="25" height="25"/>
+				</h:commandLink>
+			</p:column>
+			
 			<p:column>
 				<f:facet name="header">Editar</f:facet>
 				<h:commandLink id="botaoeditar">
