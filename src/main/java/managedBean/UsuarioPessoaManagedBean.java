@@ -36,11 +36,18 @@ public class UsuarioPessoaManagedBean {
 	private BarChartModel barChartModel = new BarChartModel();
 	private EmailUser emailUser = new EmailUser();
 	private DaoEmail<EmailUser> daoEmail = new DaoEmail<EmailUser>();
+	private String campoPesquisa;
 	
 	@PostConstruct
 	public void init() {
 		list = daoGeneric.listar(UsuarioPessoa.class);
 		
+		montarGrafico();
+	}
+
+
+	private void montarGrafico() {
+		barChartModel = new BarChartModel();
 		ChartSeries userSalario = new ChartSeries(); //Grupo de funcionários
 
 		for (UsuarioPessoa usuarioPessoa : list) {
@@ -76,6 +83,14 @@ public class UsuarioPessoaManagedBean {
 	
 	public void setEmailUser(EmailUser emailUser) {
 		this.emailUser = emailUser;
+	}
+	
+	public void setCampoPesquisa(String campoPesquisa) {
+		this.campoPesquisa = campoPesquisa;
+	}
+	
+	public String getCampoPesquisa() {
+		return campoPesquisa;
 	}
 	
 	//Metodos
@@ -166,4 +181,8 @@ public class UsuarioPessoaManagedBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Resultado", "Removido com sucesso"));
 	}
 	
+	public void pesquisar() {
+		list = daoGeneric.pesquisar(campoPesquisa);
+		montarGrafico();
+	}
 }

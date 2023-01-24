@@ -30,10 +30,15 @@
 				<p:outputLabel value="#{telefoneManagedBean.user.nome}" />
 				
 				<p:outputLabel>Número: </p:outputLabel>
-				<p:inputText value="#{telefoneManagedBean.telefone.numero}" required="true" requiredMessage="Preencha o número"/>
+				<p:inputMask value="#{telefoneManagedBean.telefone.numero}" required="true" requiredMessage="Preencha o número" mask="(99)99999-9999"/>
 				
 				<p:outputLabel>Tipo: </p:outputLabel>
-				<p:inputText value="#{telefoneManagedBean.telefone.tipo}" required="true" requiredMessage="Preencha o tipo"/>
+				<p:selectOneMenu value="#{telefoneManagedBean.telefone.tipo}" required="true" requiredMessage="Preencha o tipo">
+					<f:selectItem itemValue="Recado" itemLabel="Recado"/>
+					<f:selectItem itemValue="Comercial" itemLabel="Comercial"/>
+					<f:selectItem itemValue="Celular" itemLabel="Celular"/>
+					<f:selectItem itemValue="Residencial" itemLabel="Residencial"/>
+				</p:selectOneMenu>
 				
 			</h:panelGrid>
 			
