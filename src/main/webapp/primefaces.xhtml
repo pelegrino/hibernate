@@ -174,8 +174,28 @@
 				
 				<h:outputLabel value="E-mail"/>
 				<p:inputText value="#{usuarioPessoaManagedBean.emailUser.email}" id="emailuseradd"/>
-				<p:commandButton value="Adicionar" actionListener="#{usuarioPessoaManagedBean.addEmail}" update="emailuseradd"/>
+				<p:commandButton value="Adicionar" actionListener="#{usuarioPessoaManagedBean.addEmail}" update="emailuseradd, datatableemail"/>
 			</p:panelGrid>
+			
+			<p:dataTable value="#{usuarioPessoaManagedBean.usuarioPessoa.emails}" var="email" id="datatableemail">
+				
+				<p:column headerText="Id">
+					<h:outputLabel value="#{email.id}"/>
+				</p:column>
+				
+				<p:column headerText="E-mail">
+					<h:outputLabel value="#{email.email}"/>
+				</p:column>
+				
+				<p:column headerText="Deletar">
+					<h:commandLink id="botaoremoveremail" actionListener="#{usuarioPessoaManagedBean.removerEmail}">
+						<f:param name="codigoemail" value="#{email.id}"/>
+						<f:ajax execute="botaoremoveremail" render="datatableemail"/>
+						<p:graphicImage width="25" height="25" url="resources/img/delete.png"/>
+					</h:commandLink>
+				</p:column>
+			
+			</p:dataTable>
 		
 		</p:dialog>
 		
