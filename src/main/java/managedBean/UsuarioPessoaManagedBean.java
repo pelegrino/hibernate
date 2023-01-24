@@ -28,6 +28,7 @@ import com.google.gson.Gson;
 
 import dao.DaoEmail;
 import dao.DaoUsuario;
+import datatablelazy.LazyDataTableModelUserPessoa;
 import model.EmailUser;
 import model.UsuarioPessoa;
 
@@ -37,7 +38,7 @@ public class UsuarioPessoaManagedBean {
 
 	
 	private UsuarioPessoa usuarioPessoa = new UsuarioPessoa();
-	private List<UsuarioPessoa> list = new ArrayList<UsuarioPessoa>();
+	private LazyDataTableModelUserPessoa<UsuarioPessoa> list = new LazyDataTableModelUserPessoa<UsuarioPessoa>();
 	private DaoUsuario<UsuarioPessoa> daoGeneric = new DaoUsuario<UsuarioPessoa>();
 	private BarChartModel barChartModel = new BarChartModel();
 	private EmailUser emailUser = new EmailUser();
@@ -46,7 +47,7 @@ public class UsuarioPessoaManagedBean {
 	
 	@PostConstruct
 	public void init() {
-		list = daoGeneric.listar(UsuarioPessoa.class);
+		list.load(0, 5, null, null);
 		
 		montarGrafico();
 	}
@@ -56,7 +57,7 @@ public class UsuarioPessoaManagedBean {
 		barChartModel = new BarChartModel();
 		ChartSeries userSalario = new ChartSeries(); //Grupo de funcionários
 
-		for (UsuarioPessoa usuarioPessoa : list) {
+		for (UsuarioPessoa usuarioPessoa : list.list) {
 			userSalario.set(usuarioPessoa.getNome(), usuarioPessoa.getSalario()); //Add salários
 		}
 		
@@ -79,7 +80,8 @@ public class UsuarioPessoaManagedBean {
 		this.usuarioPessoa = usuarioPessoa;
 	}
 	
-	public List<UsuarioPessoa> getList() {
+	public LazyDataTableModelUserPessoa<UsuarioPessoa> getList() {
+		montarGrafico();
 		return list;
 	}
 	
@@ -135,7 +137,7 @@ public class UsuarioPessoaManagedBean {
 	
 	public String salvar() {
 		daoGeneric.salvar(usuarioPessoa);
-		list.add(usuarioPessoa);
+		list.list.add(usuarioPessoa);
 		init();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação", "Salvo com sucesso"));
 		usuarioPessoa = new UsuarioPessoa();
@@ -151,7 +153,7 @@ public class UsuarioPessoaManagedBean {
 		
 		try {
 			daoGeneric.removerUsuario(usuarioPessoa);
-			list.remove(usuarioPessoa);
+			list.list.remove(usuarioPessoa);
 			usuarioPessoa = new UsuarioPessoa();
 			init();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação", "Removido com sucesso"));
@@ -188,7 +190,7 @@ public class UsuarioPessoaManagedBean {
 	}
 	
 	public void pesquisar() {
-		list = daoGeneric.pesquisar(campoPesquisa);
+		list.pesquisar(campoPesquisa);
 		montarGrafico();
 	}
 	
